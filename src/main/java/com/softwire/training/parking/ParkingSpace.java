@@ -1,6 +1,5 @@
 package com.softwire.training.parking;
 
-
 public class ParkingSpace {
 
     private int id;
@@ -62,4 +61,5 @@ public class ParkingSpace {
         }
         return true;
     }
+
 }
