@@ -50,7 +50,6 @@ public class ParkingSpace {
         if (isOccupied()) {
             parkedVehicle = null;
         }
-
     }
 
     public Vehicle getParkedVehicle() {
