@@ -1,22 +1,32 @@
 package com.softwire.training.parking;
 
+
 public class ParkingSpace {
 
+    private int id;
+    private double maxHeight;
+    private double maxWidth;
+    private Vehicle.Type typeRestriction;
+
     public ParkingSpace(int id, double maxHeight, double maxWidth) {
-        // TODO - replace this!
+        this.id = id;
+        this.maxHeight = maxHeight;
+        this.maxWidth = maxWidth;
     }
 
     public ParkingSpace(int id, double maxHeight, double maxWidth, Vehicle.Type typeRestriction) {
-        // TODO - replace this!
+        this.id = id;
+        this.maxHeight = maxHeight;
+        this.maxWidth = maxWidth;
+        this.typeRestriction = typeRestriction;
     }
 
     public int getId() {
-        // TODO - replace this!
-        return 0;
+        return id;
     }
 
     public boolean isVehicleAllowed(Vehicle vehicle) {
-        // TODO - replace this!
-        return false;
+        return (vehicle.getHeight() <= this.maxHeight) && (vehicle.getWidth() <= this.maxWidth) && (vehicle.getType() == this.typeRestriction);
+
     }
 }
