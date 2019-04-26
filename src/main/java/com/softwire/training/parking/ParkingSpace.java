@@ -7,6 +7,7 @@ public class ParkingSpace {
     private double maxHeight;
     private double maxWidth;
     private Vehicle.Type typeRestriction;
+    private Vehicle parkedVehicle;
 
     public ParkingSpace(int id, double maxHeight, double maxWidth) {
         this.id = id;
@@ -26,25 +27,40 @@ public class ParkingSpace {
     }
 
     public boolean isVehicleAllowed(Vehicle vehicle) {
-        return (vehicle.getHeight() <= this.maxHeight) && (vehicle.getWidth() <= this.maxWidth) && (vehicle.getType() == this.typeRestriction);
-
+        if ((vehicle.getHeight() <= maxHeight) && (vehicle.getWidth() <= maxWidth)) {
+            if (typeRestriction == null || vehicle.getType() == typeRestriction) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void parkVehicle(Vehicle vehicle) throws IllegalArgumentException, IllegalStateException {
-        // TODO - replace this!
+
+        if (!isVehicleAllowed(vehicle)) {
+            throw new IllegalArgumentException("This vehicle will not fit here");
+        }
+        if (isOccupied()){
+            throw new IllegalStateException("There is already a car parked here");
+        }
+        parkedVehicle = vehicle;
     }
 
     public void vacate() {
-        // TODO - replace this!
+        if (isOccupied()) {
+            parkedVehicle = null;
+        }
+
     }
 
     public Vehicle getParkedVehicle() {
-        // TODO - replace this!
-        return null;
+        return parkedVehicle;
     }
 
     public boolean isOccupied() {
-        // TODO - replace this!
-        return false;
+        if (parkedVehicle == null) {
+            return false;
+        }
+        return true;
     }
 }
